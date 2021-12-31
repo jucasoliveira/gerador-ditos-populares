@@ -13,25 +13,7 @@ export async function phraseGenerator() {
     adverbios[Math.floor(Math.random() * adverbios.length)]
   }`;
 
-  const OpenAI = require("openai-nodejs");
-  const client = new OpenAI(process.env.NEXT_PUBLIC_OPENAI_API_KEY);
-
-  const result = await client.complete(
-    prompt(
-      animal[Math.floor(Math.random() * animal.length)],
-      adverbios[Math.floor(Math.random() * adverbios.length)]
-    ),
-    {
-      temperature: 0.7,
-      max_tokens: 64,
-      top_p: 1,
-      frequency_penalty: 0,
-      presence_penalty: 0,
-      engine: "davinci-instruct-beta-v3",
-    }
-  );
-
-  return { ditado: result.choices[0].text };
+  return { ditado };
 }
 
 export default async function handler(req, res) {
