@@ -6,8 +6,7 @@ This is an exercise , using a dummy idea to produce a POC of a feature.
 
 A few days ago , i saw this tweet
 
-![0eef6930-43db-4b3a-a8e0-6dd0b16e4367](https://user-images.githubusercontent.com/11979969/147813395-b7313064-9ad4-48b8-a829-febb95984f0b.jpeg)
-
+<img src="https://user-images.githubusercontent.com/11979969/147813395-b7313064-9ad4-48b8-a829-febb95984f0b.jpeg" alt="drawing" width="300"/>
 
 In this tweet , written in portuguese, is stated that a popular brazilian saying is easily created, following a set of rule:
 
