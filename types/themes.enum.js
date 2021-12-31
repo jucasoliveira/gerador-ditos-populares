@@ -64,9 +64,9 @@ const ThemesList = Array.from(ThemeValues.values());
 const DefaultTheme = ThemeValues.get("Seti");
 
 const RandomBgColor = () => {
-  const r = Math.floor(Math.random() * 256);
-  const g = Math.floor(Math.random() * 256);
-  const b = Math.floor(Math.random() * 256);
+  const r = Math.floor(Math.random() * 100);
+  const g = Math.floor(Math.random() * 200);
+  const b = Math.floor(Math.random() * 200);
   return `rgba(${r}, ${g}, ${b})`;
 };
 
