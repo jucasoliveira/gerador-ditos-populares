@@ -1,22 +1,13 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import animal from "../lib/animal.json";
-import adjetivo from "../lib/adjetivo.json";
-import verbo from "../lib/verbo.json";
-import adverbios from "../lib/adverbios.json";
 import { useEffect, useState } from "react";
-import getScreenshot from "../services/carbonController";
 import { Router } from "next/router";
-import Link from "next/link";
 import ActiveLink from "../components/ActiveLink";
 import { phraseGenerator } from "./api/phrase";
-import { ThemesList } from "../types/themes.enum";
 
 export default function Home({ ditado, imagePath }) {
   const [loading, setLoading] = useState(false);
-
-  console.log("ditado", ditado);
 
   useEffect(() => {
     const start = () => {
@@ -56,9 +47,7 @@ export default function Home({ ditado, imagePath }) {
         </ActiveLink>
 
         {!loading && (
-          <div style={{ alignItems: "center", borderWidth: 0.3 }}>
-            <img src={imagePath} alt={imagePath} />
-          </div>
+          <div style={{ alignItems: "center", borderWidth: 0.3 }}>{ditado}</div>
         )}
       </main>
 
@@ -81,6 +70,7 @@ export default function Home({ ditado, imagePath }) {
 export async function getServerSideProps() {
   const { ditado } = await phraseGenerator();
 
+  /*
   const getImagePath = await getScreenshot({
     code: ditado,
     language: "JavaScript",
@@ -89,10 +79,11 @@ export async function getServerSideProps() {
   });
 
   const imagePath = getImagePath.replace("public", "");
+  */
   return {
     props: {
       ditado,
-      imagePath,
+      imagePath: "any",
     }, // will be passed to the page component as props
   };
 }
