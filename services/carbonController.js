@@ -1,6 +1,6 @@
 import path from "path";
 import chromium from "chrome-aws-lambda";
-import puppeteer from "puppeteer-core";
+import puppeteer from "puppeteer";
 import { DefaultTheme } from "../types/themes.enum.js";
 import { openSync, closeSync } from "fs";
 import fs from "fs";
