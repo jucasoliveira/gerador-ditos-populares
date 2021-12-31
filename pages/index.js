@@ -6,13 +6,10 @@ import adjetivo from "../lib/adjetivo.json";
 import verbo from "../lib/verbo.json";
 import adverbios from "../lib/adverbios.json";
 import { useState } from "react";
+import getScreenshot from "../services/carbonController";
 
 export default function Home() {
-  const [animalName, setAnimalName] = useState("");
-  const [adjetivoName, setAdjetivoName] = useState("");
-  const [naoState, setNaoState] = useState(false);
-  const [verboName, setVerboName] = useState("");
-  const [adverbiosName, setAdverbiosName] = useState("");
+  const [ditado, setDitado] = useState("");
 
   const handleChange = () => {
     const randomAnimal = animal[Math.floor(Math.random() * animal.length)];
@@ -21,11 +18,15 @@ export default function Home() {
     const randomVerbo = verbo[Math.floor(Math.random() * verbo.length)];
     const randomAdverbios =
       adverbios[Math.floor(Math.random() * adverbios.length)];
-    setAdverbiosName(randomAdverbios);
-    setVerboName(randomVerbo);
-    setAdjetivoName(randomAdjetivo);
-    setAnimalName(randomAnimal);
-    setNaoState(true);
+
+    setDitado(
+      `${randomAnimal} ${randomAdjetivo} não ${randomVerbo} ${randomAdverbios}`
+    );
+    getScreenshot({
+      f: `${randomAnimal} ${randomAdjetivo} não ${randomVerbo} ${randomAdverbios}`,
+      t: "light",
+      o: "./output",
+    });
   };
 
   return (
@@ -42,14 +43,11 @@ export default function Home() {
         </h1>
 
         <button onClick={handleChange} className={styles.card}>
-          <h2>Gerar &rarr;</h2>
+          <h3>Gerar &rarr;</h3>
         </button>
 
-        <div className={[styles.card, { width: "200px" }]}>
-          <h2>
-            {animalName} {adjetivoName} {naoState ? "não" : ""} {verboName}
-            {adverbiosName}
-          </h2>
+        <div style={{ alignItems: "center", borderWidth: 0.3 }}>
+          <h2>{ditado}</h2>
         </div>
       </main>
 
