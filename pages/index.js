@@ -10,6 +10,7 @@ import getScreenshot from "../services/carbonController";
 import { Router } from "next/router";
 import Link from "next/link";
 import ActiveLink from "../components/ActiveLink";
+import { phraseGenerator } from "./api/phrase";
 
 export default function Home({ ditado, imagePath }) {
   const [loading, setLoading] = useState(false);
@@ -75,14 +76,10 @@ export default function Home({ ditado, imagePath }) {
 }
 
 export async function getServerSideProps(context) {
-  const randomAnimal = animal[Math.floor(Math.random() * animal.length)];
-  const randomAdjetivo = adjetivo[Math.floor(Math.random() * adjetivo.length)];
-  const randomVerbo = verbo[Math.floor(Math.random() * verbo.length)];
-  const randomAdverbios =
-    adverbios[Math.floor(Math.random() * adverbios.length)];
+  const { ditado } = await phraseGenerator();
 
   const getImagePath = await getScreenshot({
-    code: `${randomAnimal}${randomAdjetivo} não ${randomVerbo} ${randomAdverbios}`,
+    code: ditado,
     language: "JavaScript",
     theme: "DefaultTheme",
     output: "./public/screenshots",
@@ -92,7 +89,7 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      ditado: `${randomAnimal} ${randomAdjetivo} não ${randomVerbo} ${randomAdverbios}`,
+      ditado,
       imagePath,
     }, // will be passed to the page component as props
   };
