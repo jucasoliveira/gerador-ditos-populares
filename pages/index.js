@@ -5,30 +5,33 @@ import animal from "../lib/animal.json";
 import adjetivo from "../lib/adjetivo.json";
 import verbo from "../lib/verbo.json";
 import adverbios from "../lib/adverbios.json";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import getScreenshot from "../services/carbonController";
+import { Router } from "next/router";
 
-export default function Home() {
-  const [ditado, setDitado] = useState("");
+export default function Home({ ditado, imagePath }) {
+  const newPath = imagePath.replace("public/", "");
+  const [loading, setLoading] = useState(false);
 
-  const handleChange = () => {
-    const randomAnimal = animal[Math.floor(Math.random() * animal.length)];
-    const randomAdjetivo =
-      adjetivo[Math.floor(Math.random() * adjetivo.length)];
-    const randomVerbo = verbo[Math.floor(Math.random() * verbo.length)];
-    const randomAdverbios =
-      adverbios[Math.floor(Math.random() * adverbios.length)];
+  useEffect(() => {
+    const start = () => {
+      setLoading(true);
+    };
 
-    setDitado(
-      `${randomAnimal} ${randomAdjetivo} não ${randomVerbo} ${randomAdverbios}`
-    );
-    getScreenshot({
-      f: `${randomAnimal} ${randomAdjetivo} não ${randomVerbo} ${randomAdverbios}`,
-      t: "light",
-      o: "./output",
-    });
-  };
+    const end = () => {
+      setLoading(false);
+    };
 
+    Router.events.on("routeChangeStart", start);
+    Router.events.on("routeChangeComplete", end);
+    Router.events.on("routeChangeError", end);
+
+    return () => {
+      Router.events.off("routeChangeStart", start);
+      Router.events.off("routeChangeComplete", end);
+      Router.events.off("routeChangeError", end);
+    };
+  }, []);
   return (
     <div className={styles.container}>
       <Head>
@@ -42,13 +45,15 @@ export default function Home() {
           Gerador de ditos <a>Populares!</a>
         </h1>
 
-        <button onClick={handleChange} className={styles.card}>
-          <h3>Gerar &rarr;</h3>
-        </button>
-
-        <div style={{ alignItems: "center", borderWidth: 0.3 }}>
-          <h2>{ditado}</h2>
-        </div>
+        <a href="" className={styles.card}>
+          {!loading && <h3>Gerar &rarr;</h3>}
+          {loading && <h3>Gerando</h3>}
+        </a>
+        {!loading && (
+          <div style={{ alignItems: "center", borderWidth: 0.3 }}>
+            <Image src={`/${newPath}`} alt={newPath} width={600} height={300} />
+          </div>
+        )}
       </main>
 
       <footer className={styles.footer}>
@@ -65,4 +70,26 @@ export default function Home() {
       </footer>
     </div>
   );
+}
+
+export async function getStaticProps(context) {
+  const randomAnimal = animal[Math.floor(Math.random() * animal.length)];
+  const randomAdjetivo = adjetivo[Math.floor(Math.random() * adjetivo.length)];
+  const randomVerbo = verbo[Math.floor(Math.random() * verbo.length)];
+  const randomAdverbios =
+    adverbios[Math.floor(Math.random() * adverbios.length)];
+
+  const getImagePath = await getScreenshot({
+    code: `${randomAnimal}${randomAdjetivo} não ${randomVerbo} ${randomAdverbios}`,
+    language: "JavaScript",
+    theme: "DefaultTheme",
+    output: "./public/screenshots",
+  });
+
+  return {
+    props: {
+      ditado: `${randomAnimal} ${randomAdjetivo} não ${randomVerbo} ${randomAdverbios}`,
+      imagePath: getImagePath,
+    }, // will be passed to the page component as props
+  };
 }

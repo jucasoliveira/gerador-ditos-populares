@@ -2,6 +2,7 @@ import path from "path";
 import puppeteer from "puppeteer";
 import { DefaultTheme } from "../types/themes.enum.js";
 import { openSync, closeSync } from "fs";
+import fs from "fs";
 
 const CLI_DEFAULT_OUTPUT = path.resolve("screenshots");
 
@@ -17,10 +18,10 @@ const parseParameters = (params) => {
   //const fileExtension = FileUtils.getFileExtension(params.f);
 
   return {
-    code: params.f,
-    language: "JavaScript",
-    theme: params.t || CARBON_DEFAULT_THEME,
-    output: params.o || CLI_DEFAULT_OUTPUT,
+    code: params.code,
+    language: params.language,
+    theme: params.theme || CARBON_DEFAULT_THEME,
+    output: params.output || CLI_DEFAULT_OUTPUT,
   };
 };
 
@@ -42,6 +43,12 @@ const getScreenshot = async (params) => {
   const carbonParsedParameters = parseParameters(params);
 
   if (!fs.existsSync(carbonParsedParameters.output)) {
+    fs.mkdirSync(carbonParsedParameters.output);
+  } else {
+    fs.rmdirSync(carbonParsedParameters.output, {
+      recursive: true,
+      force: true,
+    });
     fs.mkdirSync(carbonParsedParameters.output);
   }
 
