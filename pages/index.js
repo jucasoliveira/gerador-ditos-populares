@@ -8,6 +8,7 @@ import adverbios from "../lib/adverbios.json";
 import { useEffect, useState } from "react";
 import getScreenshot from "../services/carbonController";
 import { Router } from "next/router";
+import Link from "next/link";
 
 export default function Home({ ditado, imagePath }) {
   const newPath = imagePath.replace("public/", "");
@@ -45,10 +46,13 @@ export default function Home({ ditado, imagePath }) {
           Gerador de ditos <a>Populares!</a>
         </h1>
 
-        <a href="/" className={styles.card}>
-          {!loading && <h3>Gerar &rarr;</h3>}
-          {loading && <h3>Gerando</h3>}
-        </a>
+        <Link href="/">
+          <a className={styles.card}>
+            {!loading && <h3>Gerar &rarr;</h3>}
+            {loading && <h3>Gerando</h3>}
+          </a>
+        </Link>
+
         {!loading && (
           <div style={{ alignItems: "center", borderWidth: 0.3 }}>
             <Image src={`/${newPath}`} alt={newPath} width={600} height={300} />
