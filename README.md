@@ -11,17 +11,29 @@ A few days ago , i saw this tweet
 In this tweet , written in portuguese, is stated that a popular brazilian saying is easily created, following a set of rule:
 
 1. The phrase must start with a animal name
-2. folowed by an adjective to thie animal
-3. added the word no
-4. followed by a verb
-5. and finished with an adverb of time, place or mood.
+2. Folowed by an adjective to the animal
+3. Add the word no
+4. Followed by a verb
+5. And finished with an adverb of time, place or mood.
 
 
 This set of rules got me thinking and I've created this application , with hardcoded data to generate completely random strings for each rule.
 
 ## Getting Started
 
-First, run the development server:
+
+Install with `npm install` or `yarn`
+
+You need to create a env file in order to generate the frases from `OpenAI`:
+
+`touch .env.local`
+
+Add your key within the enviroment variable: `NEXT_PUBLIC_OPENAI_API_KEY`
+
+Check how to create your own `OpenAI` key [here](https://beta.openai.com/docs/api-reference/introduction)
+
+
+## Run the development server:
 
 ```bash
 npm run dev
