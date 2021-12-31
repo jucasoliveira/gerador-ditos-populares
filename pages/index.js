@@ -76,7 +76,7 @@ export default function Home({ ditado, imagePath }) {
   );
 }
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const randomAnimal = animal[Math.floor(Math.random() * animal.length)];
   const randomAdjetivo = adjetivo[Math.floor(Math.random() * adjetivo.length)];
   const randomVerbo = verbo[Math.floor(Math.random() * verbo.length)];
