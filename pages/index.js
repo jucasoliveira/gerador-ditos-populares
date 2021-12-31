@@ -78,11 +78,11 @@ export async function getServerSideProps() {
     code: ditado,
     language: "JavaScript",
     theme: ThemesList[Math.floor(Math.random() * ThemesList.length)],
-    output: "./screenshots",
+    output: "./public/screenshots",
   });
 
   console.log(getImagePath);
-  const imagePath = getImagePath;
+  const imagePath = getImagePath.replace("public", "");
   return {
     props: {
       ditado,
