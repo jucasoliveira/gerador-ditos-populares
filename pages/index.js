@@ -71,18 +71,18 @@ export default function Home({ ditado, imagePath }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const { ditado } = await phraseGenerator();
 
   const getImagePath = await getScreenshot({
     code: ditado,
     language: "JavaScript",
     theme: ThemesList[Math.floor(Math.random() * ThemesList.length)],
-    output: "./public/screenshots",
+    output: "./screenshots",
   });
 
   console.log(getImagePath);
-  const imagePath = getImagePath.replace("public", "");
+  const imagePath = getImagePath;
   return {
     props: {
       ditado,
