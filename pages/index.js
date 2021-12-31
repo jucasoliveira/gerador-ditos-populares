@@ -76,7 +76,7 @@ export default function Home({ ditado, imagePath }) {
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps() {
   const { ditado } = await phraseGenerator();
 
   const getImagePath = await getScreenshot({
