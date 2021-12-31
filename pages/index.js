@@ -16,6 +16,8 @@ import { ThemesList } from "../types/themes.enum";
 export default function Home({ ditado, imagePath }) {
   const [loading, setLoading] = useState(false);
 
+  console.log("ditado", ditado);
+
   useEffect(() => {
     const start = () => {
       setLoading(true);
@@ -76,7 +78,7 @@ export default function Home({ ditado, imagePath }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const { ditado } = await phraseGenerator();
 
   const getImagePath = await getScreenshot({
