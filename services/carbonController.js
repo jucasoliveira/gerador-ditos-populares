@@ -16,8 +16,6 @@ const getFileName = () => {
 };
 
 const parseParameters = (params) => {
-  //const fileExtension = FileUtils.getFileExtension(params.f);
-
   return {
     code: params.code,
     language: params.language,

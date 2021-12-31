@@ -9,9 +9,9 @@ import { useEffect, useState } from "react";
 import getScreenshot from "../services/carbonController";
 import { Router } from "next/router";
 import Link from "next/link";
+import ActiveLink from "../components/ActiveLink";
 
 export default function Home({ ditado, imagePath }) {
-  const newPath = imagePath.replace("public/", "");
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -46,16 +46,14 @@ export default function Home({ ditado, imagePath }) {
           Gerador de ditos <a>Populares!</a>
         </h1>
 
-        <Link href="/">
-          <a className={styles.card}>
-            {!loading && <h3>Gerar &rarr;</h3>}
-            {loading && <h3>Gerando</h3>}
-          </a>
-        </Link>
+        <ActiveLink href="/">
+          {!loading && <h3>Gerar &rarr;</h3>}
+          {loading && <h3>Gerando</h3>}
+        </ActiveLink>
 
         {!loading && (
           <div style={{ alignItems: "center", borderWidth: 0.3 }}>
-            <Image src={`/${newPath}`} alt={newPath} width={600} height={300} />
+            <Image src={imagePath} alt={imagePath} width={600} height={300} />
           </div>
         )}
       </main>
@@ -90,10 +88,12 @@ export async function getServerSideProps(context) {
     output: "./public/screenshots",
   });
 
+  const imagePath = getImagePath.replace("public", "");
+
   return {
     props: {
       ditado: `${randomAnimal} ${randomAdjetivo} não ${randomVerbo} ${randomAdverbios}`,
-      imagePath: getImagePath,
+      imagePath,
     }, // will be passed to the page component as props
   };
 }
