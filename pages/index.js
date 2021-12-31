@@ -45,7 +45,7 @@ export default function Home({ ditado, imagePath }) {
           Gerador de ditos <a>Populares!</a>
         </h1>
 
-        <a href="" className={styles.card}>
+        <a href="/" className={styles.card}>
           {!loading && <h3>Gerar &rarr;</h3>}
           {loading && <h3>Gerando</h3>}
         </a>

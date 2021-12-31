@@ -53,7 +53,14 @@ const getScreenshot = async (params) => {
     fs.mkdirSync(carbonParsedParameters.output);
   }
 
-  const browser = await puppeteer.launch({ args: ["--no-sandbox"] });
+  //const browser = await puppeteer.launch({ args: ["--no-sandbox"] });
+  const browser = await chromium.puppeteer.launch({
+    args: [...chromium.args, "--hide-scrollbars", "--disable-web-security"],
+    defaultViewport: chromium.defaultViewport,
+    executablePath: await chromium.executablePath,
+    headless: true,
+    ignoreHTTPSErrors: true,
+  });
   const page = await browser.newPage();
 
   const carbonQueryString = convertParamsToQuery(carbonParsedParameters);
