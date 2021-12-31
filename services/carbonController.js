@@ -1,7 +1,7 @@
 import path from "path";
 import chromium from "chrome-aws-lambda";
 import puppeteer from "puppeteer";
-import { DefaultTheme } from "../types/themes.enum.js";
+import { DefaultTheme, RandomBgColor } from "../types/themes.enum.js";
 import { openSync, closeSync } from "fs";
 import fs from "fs";
 
@@ -26,6 +26,7 @@ const parseParameters = (params) => {
 
 const convertParamsToQuery = (params) => {
   const paramsMap = new Map();
+  paramsMap.set("bg", RandomBgColor());
   paramsMap.set("t", params.theme);
   paramsMap.set("l", params.language);
   paramsMap.set("code", params.code);

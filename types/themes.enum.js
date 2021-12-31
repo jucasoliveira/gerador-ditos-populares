@@ -63,4 +63,11 @@ const ThemesList = Array.from(ThemeValues.values());
 
 const DefaultTheme = ThemeValues.get("Seti");
 
-export { Theme, ThemeValues, ThemesList, DefaultTheme };
+const RandomBgColor = () => {
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  return `rgba(${r}, ${g}, ${b})`;
+};
+
+export { Theme, ThemeValues, ThemesList, DefaultTheme, RandomBgColor };

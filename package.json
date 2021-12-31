@@ -11,6 +11,7 @@
     "chrome-aws-lambda": "^10.1.0",
     "fs": "^0.0.1-security",
     "next": "12.0.7",
+    "openai-nodejs": "^1.1.0",
     "path": "^0.12.7",
     "puppeteer": "^13.0.1",
     "puppeteer-core": "^13.0.1",

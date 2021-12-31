@@ -11,6 +11,7 @@ import { Router } from "next/router";
 import Link from "next/link";
 import ActiveLink from "../components/ActiveLink";
 import { phraseGenerator } from "./api/phrase";
+import { ThemesList } from "../types/themes.enum";
 
 export default function Home({ ditado, imagePath }) {
   const [loading, setLoading] = useState(false);
@@ -54,7 +55,7 @@ export default function Home({ ditado, imagePath }) {
 
         {!loading && (
           <div style={{ alignItems: "center", borderWidth: 0.3 }}>
-            <Image src={imagePath} alt={imagePath} width={600} height={300} />
+            <img src={imagePath} alt={imagePath} />
           </div>
         )}
       </main>
@@ -77,16 +78,16 @@ export default function Home({ ditado, imagePath }) {
 
 export async function getServerSideProps(context) {
   const { ditado } = await phraseGenerator();
+  const { resolvedUrl } = context;
 
   const getImagePath = await getScreenshot({
     code: ditado,
     language: "JavaScript",
-    theme: "DefaultTheme",
+    theme: ThemesList[Math.floor(Math.random() * ThemesList.length)],
     output: "./public/screenshots",
   });
 
   const imagePath = getImagePath.replace("public", "");
-
   return {
     props: {
       ditado,
