@@ -2,9 +2,11 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { useEffect, useState } from "react";
+import getScreenshot from "../services/carbonController";
 import { Router } from "next/router";
 import ActiveLink from "../components/ActiveLink";
 import { phraseGenerator } from "./api/phrase";
+import { ThemesList } from "../types/themes.enum";
 
 export default function Home({ ditado, imagePath }) {
   const [loading, setLoading] = useState(false);
@@ -47,7 +49,9 @@ export default function Home({ ditado, imagePath }) {
         </ActiveLink>
 
         {!loading && (
-          <div style={{ alignItems: "center", borderWidth: 0.3 }}>{ditado}</div>
+          <div style={{ alignItems: "center", borderWidth: 0.3 }}>
+            <img src={imagePath} alt={imagePath} />
+          </div>
         )}
       </main>
 
@@ -70,7 +74,6 @@ export default function Home({ ditado, imagePath }) {
 export async function getServerSideProps() {
   const { ditado } = await phraseGenerator();
 
-  /*
   const getImagePath = await getScreenshot({
     code: ditado,
     language: "JavaScript",
@@ -78,12 +81,12 @@ export async function getServerSideProps() {
     output: "./public/screenshots",
   });
 
+  console.log(getImagePath);
   const imagePath = getImagePath.replace("public", "");
-  */
   return {
     props: {
       ditado,
-      imagePath: "any",
+      imagePath,
     }, // will be passed to the page component as props
   };
 }
