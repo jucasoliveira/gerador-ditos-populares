@@ -1,5 +1,6 @@
 import path from "path";
-import puppeteer from "puppeteer";
+import chromium from "chrome-aws-lambda";
+import puppeteer from "puppeteer-core";
 import { DefaultTheme } from "../types/themes.enum.js";
 import { openSync, closeSync } from "fs";
 import fs from "fs";
@@ -52,7 +53,7 @@ const getScreenshot = async (params) => {
     fs.mkdirSync(carbonParsedParameters.output);
   }
 
-  const browser = await puppeteer.launch();
+  const browser = await chromium.puppeteer.launch();
   const page = await browser.newPage();
 
   const carbonQueryString = convertParamsToQuery(carbonParsedParameters);
