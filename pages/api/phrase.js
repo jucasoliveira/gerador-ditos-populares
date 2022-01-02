@@ -31,7 +31,7 @@ export async function phraseGenerator() {
     }
   );
 
-  return { ditado };
+  return { ditado: result.choices[0].text };
 }
 
 export default async function handler(req, res) {
