@@ -1,14 +1,9 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import animal from "../lib/animal.json";
-import adjetivo from "../lib/adjetivo.json";
-import verbo from "../lib/verbo.json";
-import adverbios from "../lib/adverbios.json";
 import { useEffect, useState } from "react";
 import getScreenshot from "../services/carbonController";
 import { Router } from "next/router";
-import Link from "next/link";
 import ActiveLink from "../components/ActiveLink";
 import { phraseGenerator } from "./api/phrase";
 import { ThemesList } from "../types/themes.enum";

@@ -4,7 +4,7 @@ import adjetivo from "../../lib/adjetivo.json";
 import verbo from "../../lib/verbo.json";
 import adverbios from "../../lib/adverbios.json";
 import getScreenshot from "../../services/carbonController";
-import { prompt } from "../../types/prompt.enum";
+import { prompt, promptEnglish } from "../../types/prompt.enum";
 
 export async function phraseGenerator() {
   const ditado = ` ${animal[Math.floor(Math.random() * animal.length)]} ${
@@ -17,7 +17,7 @@ export async function phraseGenerator() {
   const client = new OpenAI(process.env.NEXT_PUBLIC_OPENAI_API_KEY);
 
   const result = await client.complete(
-    prompt(
+    promptEnglish(
       animal[Math.floor(Math.random() * animal.length)],
       adverbios[Math.floor(Math.random() * adverbios.length)]
     ),
@@ -31,7 +31,7 @@ export async function phraseGenerator() {
     }
   );
 
-  return { ditado: result.choices[0].text };
+  return { ditado };
 }
 
 export default async function handler(req, res) {
