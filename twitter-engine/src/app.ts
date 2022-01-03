@@ -1,8 +1,5 @@
 import cron from 'node-cron';
-import express from 'express';
-import * as http from 'http';
 import { phraseGenerator } from './services/phrase';
-import path from 'path';
 require('dotenv').config({ path: './.env' });
 
 // Schedule a task to run every minute

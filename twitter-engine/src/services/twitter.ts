@@ -1,5 +1,3 @@
-import axios from 'axios';
-import Twitter from 'twitter-lite';
 import fs from 'fs';
 import path from 'path';
 import { TwitterClient } from 'twitter-api-client';
