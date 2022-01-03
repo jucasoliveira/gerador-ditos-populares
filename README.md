@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/11979969/147932088-bcc0b57a-7275-4b35-91b0-452db99e35ba.png" />
+</p>
+
 ## Introdution
 
 This is an exercise , using a dummy idea to produce a POC of a feature.
