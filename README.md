@@ -4,7 +4,7 @@ This is an exercise , using a dummy idea to produce a POC of a feature.
 
 ## What is this POC
 
-A few days ago , i saw this tweet
+A few days ago , I saw this tweet
 
 <img src="https://user-images.githubusercontent.com/11979969/147813395-b7313064-9ad4-48b8-a829-febb95984f0b.jpeg" alt="drawing" width="300"/>
 
