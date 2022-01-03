@@ -21,6 +21,12 @@ This set of rules got me thinking and I've created this application , with hardc
 
 ## Getting Started with twitter bot
 
+Head over to Twitter engine directory
+
+```bash
+cd ./twitter-engine
+```
+
 You need to create a env file in order to generate the frases from `OpenAI`, and to create tweets:
 
 `touch .env`
