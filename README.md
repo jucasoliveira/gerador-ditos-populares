@@ -81,6 +81,12 @@ yarn dev
 
 There you have it, the application will generate the image at `./src/public/images` and try to send it to twitter according to `node-cron` schedule on `./src/app.ts`
 
+## How it works
+
+![Screenshot 2022-01-03 at 15 30 12](https://user-images.githubusercontent.com/11979969/147949036-47a4cb1a-2858-4133-9811-6270aa062234.png)
+
+
+
 # Getting Started with nextJs
 
 Head over to Nextjs engine directory
