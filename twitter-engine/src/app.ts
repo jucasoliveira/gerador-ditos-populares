@@ -2,25 +2,20 @@ import cron from 'node-cron';
 import express from 'express';
 import * as http from 'http';
 import { phraseGenerator } from './services/phrase';
-const port = 3500;
+import path from 'path';
+require('dotenv').config({ path: './.env' });
 
-const app = express();
-
-app.get('/twitter', async (req, res) => {
-  const { ditado } = await phraseGenerator();
-  console.log('hello', ditado);
-  res.send('hello');
+// Schedule a task to run every minute
+cron.schedule('* * * * *', async () => {
+  const { image, ditado } = await phraseGenerator();
+  console.log(`generetad phrase: ${ditado} and image: ${image}`);
 });
 
 // Schedule a task to run every 24 hours
-cron.schedule('0 0 * * *', () => {
-  console.log('running a task every 24 hours');
+cron.schedule('0 0 * * *', async () => {
+  const { image, ditado } = await phraseGenerator();
 });
 
 process.on('exit', function (code) {
   return console.log(`About to exit with code ${code}`);
-});
-
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
 });

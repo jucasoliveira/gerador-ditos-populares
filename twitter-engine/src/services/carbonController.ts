@@ -67,8 +67,9 @@ const getScreenshot = async (params: CarbonParameters) => {
   await page.goto(carbonFullPath);
   const targetElement = await page.$(CARBON_HTML_SELECTOR);
   let screenshotPath;
+  const fileName = getFileName();
   if (targetElement) {
-    const OUTPUT_PATH = path.join(carbonParsedParameters.output, getFileName());
+    const OUTPUT_PATH = path.join(carbonParsedParameters.output, fileName);
 
     closeSync(openSync(OUTPUT_PATH, 'a'));
     await targetElement.screenshot({
@@ -82,7 +83,7 @@ const getScreenshot = async (params: CarbonParameters) => {
 
   await browser.close();
 
-  return screenshotPath;
+  return fileName;
 };
 
 export default getScreenshot;
