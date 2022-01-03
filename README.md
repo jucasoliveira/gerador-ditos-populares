@@ -29,7 +29,9 @@ cd ./twitter-engine
 
 You need to create a env file in order to generate the frases from `OpenAI`, and to create tweets:
 
-`touch .env`
+```bash
+touch .env
+```
 
 
 Add your key within the enviroment variable: `OPENAI_API_KEY`
@@ -39,6 +41,16 @@ Check how to create your own `OpenAI` key [here](https://beta.openai.com/docs/ap
 Add your `Twitter` keys as `TWITTER_CONSUMER_KEY` , `TWITTER_CONSUMER_SECRET`, `TWITTER_ACCESS_TOKEN_KEY` , `TWITTER_ACCESS_TOKEN_SECRET`
 
 Check how to create your own keys [here](https://developer.twitter.com/en/docs/apps/app-management)
+
+Your file should have the variables as follow:
+
+```
+OPENAI_API_KEY="your key"
+TWITTER_CONSUMER_KEY="your key"
+TWITTER_CONSUMER_SECRET="your key"
+TWITTER_ACCESS_TOKEN_KEY="your key"
+TWITTER_ACCESS_TOKEN_SECRET="your key"
+```
 
 ## Instal packages
 
@@ -63,14 +75,27 @@ yarn dev
 
 ## Getting Started with nextJs
 
+Head over to Nextjs engine directory
+
+```bash
+cd ./frontend-engine
+```
 
 Install with `npm install` or `yarn`
 
 You need to create a env file in order to generate the frases from `OpenAI`:
 
-`touch .env.local`
+```bash 
+touch .env.local
+```
 
 Add your key within the enviroment variable: `NEXT_PUBLIC_OPENAI_API_KEY`
+
+Your file should have the variables as follow:
+
+```
+NEXT_PUBLIC_OPENAI_API_KEY="your key"
+```
 
 Check how to create your own `OpenAI` key [here](https://beta.openai.com/docs/api-reference/introduction)
 
