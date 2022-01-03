@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "es2016",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+    "module": "commonjs",                                /* Specify what module code is generated. */
+    "noImplicitAny": true,                               /* Warn on expressions and declarations with an implied 'any' type. */
+    "rootDir": "./src",                                  /* Specify the root folder within your source files. */
+    "removeComments": true,                              /* Do not emit comments to output. */
+    "resolveJsonModule": true,                        /* Enable importing .json files */
+    "preserveConstEnums": true,                       /* Disable erasing `const enum` declarations in generated code. */
+    "esModuleInterop": true,                             /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables `allowSyntheticDefaultImports` for type compatibility. */
+    "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */
+    "strict": true,                                      /* Enable all strict type-checking options. */
+    "skipLibCheck": true,                                 /* Skip type checking all .d.ts files. */
+    "sourceMap": true,                                  /* Generates corresponding .map file. "**/
+    "downlevelIteration": true,                          /* Enable all downlevel iteration options. */
+  }
+}

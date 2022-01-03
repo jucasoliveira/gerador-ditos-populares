@@ -1,8 +1,75 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Introdution
 
-## Getting Started
+This is an exercise , using a dummy idea to produce a POC of a feature.
 
-First, run the development server:
+## What is this POC
+
+A few days ago , i saw this tweet
+
+<img src="https://user-images.githubusercontent.com/11979969/147813395-b7313064-9ad4-48b8-a829-febb95984f0b.jpeg" alt="drawing" width="300"/>
+
+In this tweet , written in portuguese, is stated that a popular brazilian saying is easily created, following a set of rule:
+
+1. The phrase must start with a animal name
+2. Folowed by an adjective to the animal
+3. Add the word no
+4. Followed by a verb
+5. And finished with an adverb of time, place or mood.
+
+
+This set of rules got me thinking and I've created this application , with hardcoded data to generate completely random strings for each rule.
+
+## Getting Started with twitter bot
+
+You need to create a env file in order to generate the frases from `OpenAI`, and to create tweets:
+
+`touch .env`
+
+
+Add your key within the enviroment variable: `OPENAI_API_KEY`
+
+Check how to create your own `OpenAI` key [here](https://beta.openai.com/docs/api-reference/introduction)
+
+Add your `Twitter` keys as `TWITTER_CONSUMER_KEY` , `TWITTER_CONSUMER_SECRET`, `TWITTER_ACCESS_TOKEN_KEY` , `TWITTER_ACCESS_TOKEN_SECRET`
+
+Check how to create your own keys [here](https://developer.twitter.com/en/docs/apps/app-management)
+
+## Instal packages
+
+```bash 
+yarn
+```
+
+or 
+
+```bash
+npm install
+```
+
+## Run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+
+## Getting Started with nextJs
+
+
+Install with `npm install` or `yarn`
+
+You need to create a env file in order to generate the frases from `OpenAI`:
+
+`touch .env.local`
+
+Add your key within the enviroment variable: `NEXT_PUBLIC_OPENAI_API_KEY`
+
+Check how to create your own `OpenAI` key [here](https://beta.openai.com/docs/api-reference/introduction)
+
+
+## Run the development server:
 
 ```bash
 npm run dev
