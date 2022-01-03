@@ -13,11 +13,8 @@ export const sendTweet = (tweet: string, image: string) => {
     maxByteSize: 32000000 // Maximum (approximated) memory size for cache store. Defaults to 16000000.
   });
 
-  const mediaFile = fs.readFileSync(path.join(__dirname, '../public/images/', image));
-
   const mediaPath = path.join(__dirname, '../public/images/', image);
   const mediaType = 'image/png';
-  const mediaData = require('fs').readFileSync(mediaPath);
   const mediaSize = require('fs').statSync(mediaPath).size;
 
   initUpload() // Declare that you wish to upload some media
@@ -48,9 +45,6 @@ export const sendTweet = (tweet: string, image: string) => {
     const data = await twitterClient.media.mediaUploadAppend({
       command: 'APPEND',
       media_id: mediaId,
-      // media: mediaData,
-      // media: mediaData.toString(),
-      // media_data: mediaData.toString("base64"),
       media_data: require('fs').readFileSync(mediaPath, { encoding: 'base64' }),
       segment_index: '0'
     });

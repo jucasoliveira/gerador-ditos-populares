@@ -7,7 +7,7 @@ const promptEnglish = (name: string) => {
 };
 
 const promptTwitter = (tweet: string) => {
-  return `Este é um gerador automático de frases usando #OpenAI #gpt-3, dm para saber mais. \n ${tweet}`;
+  return `Este é um gerador automático de frases usando #OpenAI #gpt3, dm para saber mais. \n ${tweet}`;
 };
 
 export { prompt, promptEnglish, promptTwitter };

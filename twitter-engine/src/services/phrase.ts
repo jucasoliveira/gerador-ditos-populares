@@ -4,10 +4,9 @@ import getScreenshot from './carbonController';
 import { CarbonParameters } from '../types/carbon.types';
 import { sendTweet } from './twitter';
 const animal = require('../utils/animal.json');
+const OpenAI = require('openai-nodejs');
 
 export async function phraseGenerator() {
-  const OpenAI = require('openai-nodejs');
-
   const client = new OpenAI(process.env.OPENAI_API_KEY);
 
   const result = await client.complete(prompt(animal[Math.floor(Math.random() * animal.length)]), {
