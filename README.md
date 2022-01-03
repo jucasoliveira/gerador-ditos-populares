@@ -2,6 +2,8 @@
 
 This is an exercise , using a dummy idea to produce a POC of a feature.
 
+Check it out the [Twitter bot](https://twitter.com/umditadopopular)
+
 ## What is this POC
 
 A few days ago , I saw this tweet
