@@ -2,8 +2,8 @@ import cron from 'node-cron';
 import { phraseGenerator } from './services/phrase';
 require('dotenv').config({ path: './.env' });
 
-// Schedule a task to run every minute
-cron.schedule('* * * * *', async () => {
+// Schedule a task to run every 3 hours
+cron.schedule('0 0 */3 * * *', async () => {
   const { image, ditado } = await phraseGenerator();
   console.log(`generetad phrase: ${ditado} and image: ${image}`);
 });

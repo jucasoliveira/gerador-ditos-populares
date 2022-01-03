@@ -19,7 +19,43 @@ In this tweet , written in portuguese, is stated that a popular brazilian saying
 
 This set of rules got me thinking and I've created this application , with hardcoded data to generate completely random strings for each rule.
 
-## Getting Started
+## Getting Started with twitter bot
+
+You need to create a env file in order to generate the frases from `OpenAI`, and to create tweets:
+
+`touch .env`
+
+
+Add your key within the enviroment variable: `OPENAI_API_KEY`
+
+Check how to create your own `OpenAI` key [here](https://beta.openai.com/docs/api-reference/introduction)
+
+Add your `Twitter` keys as `TWITTER_CONSUMER_KEY` , `TWITTER_CONSUMER_SECRET`, `TWITTER_ACCESS_TOKEN_KEY` , `TWITTER_ACCESS_TOKEN_SECRET`
+
+Check how to create your own keys [here](https://developer.twitter.com/en/docs/apps/app-management)
+
+## Instal packages
+
+```bash 
+yarn
+```
+
+or 
+
+```bash
+npm install
+```
+
+## Run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+
+## Getting Started with nextJs
 
 
 Install with `npm install` or `yarn`

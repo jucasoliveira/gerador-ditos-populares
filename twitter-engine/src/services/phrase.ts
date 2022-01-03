@@ -1,5 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { prompt } from '../types/prompt.enum';
+import { prompt, promptTwitter } from '../types/prompt.enum';
 import getScreenshot from './carbonController';
 import { CarbonParameters } from '../types/carbon.types';
 import { sendTweet } from './twitter';
@@ -30,6 +30,7 @@ export async function phraseGenerator() {
     output: `${__dirname}/../public/images/`
   });
 
-  const tweet = sendTweet(result.choices[0].text, getImageUrl);
+  const tweet = sendTweet(promptTwitter(result.choices[0].text), getImageUrl);
+
   return { ditado: result.choices[0].text, image: getImageUrl };
 }
