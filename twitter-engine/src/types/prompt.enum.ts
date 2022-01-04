@@ -6,8 +6,8 @@ const promptEnglish = (name: string) => {
   return `Create a one-line phrase in portuguese starting with ${name} ; adding an adjective to ${name}; a verb; an adverb of place or time`;
 };
 
-const promptTwitter = (tweet: string) => {
-  return `Este é um gerador automático de frases usando #OpenAI #gpt3, dm para saber mais. \n ${tweet}`;
+const promptTwitter = () => {
+  return `Este é um #twitter #bot gerador automático de frases usando #OpenAI #gpt3.`;
 };
 
 export { prompt, promptEnglish, promptTwitter };

@@ -101,7 +101,7 @@ export const streamMentions = async () => {
       .on('start', (response) => console.log('Streaming messages of @umditadopopular'))
       .on('data', async (tweet: any) => {
         const { ditado, image } = await phraseGenerator();
-        const tweetText = `@${tweet.user.screen_name} ${promptTwitter(ditado)}`;
+        const tweetText = `@${tweet.user.screen_name} ${promptTwitter()}`;
         const { id_str } = tweet;
         sendTweet(id_str, tweetText, image);
         // callback(tweetText, image);
