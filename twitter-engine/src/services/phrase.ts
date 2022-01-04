@@ -29,7 +29,5 @@ export async function phraseGenerator() {
     output: `${__dirname}/../public/images/`
   });
 
-  const tweet = sendTweet(promptTwitter(result.choices[0].text), getImageUrl);
-
   return { ditado: result.choices[0].text, image: getImageUrl };
 }

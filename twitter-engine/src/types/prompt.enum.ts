@@ -1,5 +1,5 @@
 const prompt = (name: string) => {
-  return `Crie uma frase de uma linha  contendo ${name}, um adjetivo para ${name}, a palavra não, um verbo e um advérbio de lugar ou hora;`;
+  return `Crie um ditado popular, de uma linha, em português começando com ${name}, adicionando um adjetivo para ${name}, contendo a palavra não,  um verbo e um advérbio de lugar ou hora.`;
 };
 
 const promptEnglish = (name: string) => {
